@@ -1,4 +1,15 @@
-# localversion
+#ECOM MySpectacle
+
+##Branch documentation
+- Master for stable build release with x.y version, commited from master.
+- test for x.y.z versions, Q&A before master merge, merging IHM & backend into it for assembly 
+- IHM branch for frontend functions,  used only Master functionality !
+- Backend branch for backend functions, used only Master functionality !
+
+
+
+
+# JHipster documentation
 This application was generated using JHipster 5.3.4, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.3.4](https://www.jhipster.tech/documentation-archive/v5.3.4).
 
 ## Development
