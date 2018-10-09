@@ -9,7 +9,7 @@ stages:
 before_script:
     - export MAVEN_USER_HOME=`pwd`/.maven
     - chmod +x mvnw
-    - sudo apt-get install openjdk-8-jre
+    - apt-get install openjdk-8-jre
     - ./mvnw com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v8.11.4 -DnpmVersion=6.4.1 -Dmaven.repo.local=$MAVEN_USER_HOME
     - ./mvn com.github.eirslett:frontend-maven-plugin:npm -Dmaven.repo.local=$MAVEN_USER_HOME
 
