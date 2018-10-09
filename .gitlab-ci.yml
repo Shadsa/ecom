@@ -8,16 +8,16 @@ stages:
 
 before_script:
     - export MAVEN_USER_HOME=`pwd`/.maven
-    - ./mvnw com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v8.11.4 -DnpmVersion=6.4.1 -Dmaven.repo.local=$MAVEN_USER_HOME
-    - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dmaven.repo.local=$MAVEN_USER_HOME
+    - ./mvn com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v8.11.4 -DnpmVersion=6.4.1 -Dmaven.repo.local=$MAVEN_USER_HOME
+    - ./mvn com.github.eirslett:frontend-maven-plugin:npm -Dmaven.repo.local=$MAVEN_USER_HOME
 
 maven-build:
     stage: build
     script:
-        - ./mvnw compile -Dmaven.repo.local=$MAVEN_USER_HOME
-        - ./mvnw test -Dmaven.repo.local=$MAVEN_USER_HOME
-        - ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='test -- -u' -Dmaven.repo.local=$MAVEN_USER_HOME
-        - ./mvnw verify -Pprod -DskipTests -Dmaven.repo.local=$MAVEN_USER_HOME
+        - ./mvn compile -Dmaven.repo.local=$MAVEN_USER_HOME
+        - ./mvn test -Dmaven.repo.local=$MAVEN_USER_HOME
+        - ./mvn com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='test -- -u' -Dmaven.repo.local=$MAVEN_USER_HOME
+        - ./mvn verify -Pprod -DskipTests -Dmaven.repo.local=$MAVEN_USER_HOME
     artifacts:
         paths:
             - target/*.war
