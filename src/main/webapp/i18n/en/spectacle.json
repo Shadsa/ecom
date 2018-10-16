@@ -1,0 +1,35 @@
+
+{
+    "localversionApp": {
+        "spectacle" : {
+            "home": {
+                "title": "Spectacles",
+                "createLabel": "Create a new Spectacle",
+                "createOrEditLabel": "Create or edit a Spectacle"
+            },
+            "created": "A new Spectacle is created with identifier {{ param }}",
+            "updated": "A Spectacle is updated with identifier {{ param }}",
+            "deleted": "A Spectacle is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Spectacle {{ id }}?"
+            },
+            "detail": {
+                "title": "Spectacle"
+            },
+            "nom": "Nom",
+            "date": "Date",
+            "duree": "Duree",
+            "resume": "Resume",
+            "salle": "Salle",
+            "reservation": "Reservation",
+            "ouvreur": "Ouvreur",
+            "note": "Note",
+            "help": {
+                "nom": "Nom du spectacle",
+                "date": "Date du spectacle",
+                "duree": "Durée du spectacle en minute",
+                "resume": "Résumé du spectacle"
+            }
+        }
+    }
+}

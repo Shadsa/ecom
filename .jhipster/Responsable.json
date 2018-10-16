@@ -1,0 +1,71 @@
+{
+    "name": "Responsable",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "javadoc": "Nom du responsable",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prenom",
+            "javadoc": "Prénom du responsable",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateNaissance",
+            "javadoc": "Date de naissance du responsable",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
+            "javadoc": "Email du responsable",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "estGestionnaire",
+            "javadoc": "Le responsable est le gestionnaire",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "salle",
+            "otherEntityName": "salle",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "responsable"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "note",
+            "otherEntityName": "note",
+            "otherEntityRelationshipName": "responsable"
+        }
+    ],
+    "changelogDate": "20181016092954",
+    "javadoc": "Entité Responsable, un responsable gère une salle. Si le responsable est aussi le gestionnaire,\nil aura des accès supplémentaires : vision global des salles, gestion des responsables.\n@author MySpectacle team",
+    "entityTableName": "responsable",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

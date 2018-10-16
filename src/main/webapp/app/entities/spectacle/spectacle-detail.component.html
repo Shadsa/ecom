@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="spectacle">
+            <h2><span jhiTranslate="localversionApp.spectacle.detail.title">Spectacle</span> {{spectacle.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="localversionApp.spectacle.nom" [ngbTooltip]="'localversionApp.spectacle.help.nom' | translate">Nom</span></dt>
+                <dd>
+                    <span>{{spectacle.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.spectacle.date" [ngbTooltip]="'localversionApp.spectacle.help.date' | translate">Date</span></dt>
+                <dd>
+                    <span>{{spectacle.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.spectacle.duree" [ngbTooltip]="'localversionApp.spectacle.help.duree' | translate">Duree</span></dt>
+                <dd>
+                    <span>{{spectacle.duree}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.spectacle.resume" [ngbTooltip]="'localversionApp.spectacle.help.resume' | translate">Resume</span></dt>
+                <dd>
+                    <span>{{spectacle.resume}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.spectacle.salle">Salle</span></dt>
+                <dd>
+                    <div *ngIf="spectacle.salle">
+                        <a [routerLink]="['/salle', spectacle.salle?.id, 'view']">{{spectacle.salle?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/spectacle', spectacle.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

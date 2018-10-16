@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="qRCode">
+            <h2><span jhiTranslate="localversionApp.qRCode.detail.title">QR Code</span> {{qRCode.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="localversionApp.qRCode.qrcode" [ngbTooltip]="'localversionApp.qRCode.help.qrcode' | translate">Qrcode</span></dt>
+                <dd>
+                    <div *ngIf="qRCode.qrcode">
+                        <a (click)="openFile(qRCode.qrcodeContentType, qRCode.qrcode)">
+                            <img [src]="'data:' + qRCode.qrcodeContentType + ';base64,' + qRCode.qrcode" style="max-width: 100%;" alt="qRCode image"/>
+                        </a>
+                        {{qRCode.qrcodeContentType}}, {{byteSize(qRCode.qrcode)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.qRCode.reservation">Reservation</span></dt>
+                <dd>
+                    <div *ngIf="qRCode.reservation">
+                        <a [routerLink]="['/reservation', qRCode.reservation?.id, 'view']">{{qRCode.reservation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.qRCode.user">User</span></dt>
+                <dd>
+                    {{qRCode.user?.id}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/qr-code', qRCode.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

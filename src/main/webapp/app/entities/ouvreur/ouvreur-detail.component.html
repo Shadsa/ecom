@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ouvreur">
+            <h2><span jhiTranslate="localversionApp.ouvreur.detail.title">Ouvreur</span> {{ouvreur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="localversionApp.ouvreur.nom" [ngbTooltip]="'localversionApp.ouvreur.help.nom' | translate">Nom</span></dt>
+                <dd>
+                    <span>{{ouvreur.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.ouvreur.prenom" [ngbTooltip]="'localversionApp.ouvreur.help.prenom' | translate">Prenom</span></dt>
+                <dd>
+                    <span>{{ouvreur.prenom}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.ouvreur.dateNaissance" [ngbTooltip]="'localversionApp.ouvreur.help.dateNaissance' | translate">Date Naissance</span></dt>
+                <dd>
+                    <span>{{ouvreur.dateNaissance}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.ouvreur.email" [ngbTooltip]="'localversionApp.ouvreur.help.email' | translate">Email</span></dt>
+                <dd>
+                    <span>{{ouvreur.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.ouvreur.spectacle">Spectacle</span></dt>
+                <dd>
+                    <span *ngFor="let spectacle of ouvreur.spectacles; let last = last">
+                        <a [routerLink]="['/spectacle', spectacle?.id, 'view' ]">{{spectacle.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ouvreur', ouvreur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
