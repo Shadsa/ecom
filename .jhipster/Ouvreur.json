@@ -1,0 +1,57 @@
+{
+    "name": "Ouvreur",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "javadoc": "Nom du ouvreur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prenom",
+            "javadoc": "Prénom du ouvreur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateNaissance",
+            "javadoc": "Date de naissance du ouvreur",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
+            "javadoc": "Email du ouvreur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "ouvreur",
+            "relationshipName": "spectacle",
+            "otherEntityName": "spectacle",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20181016092956",
+    "javadoc": "Entité Ouvreur. L'ouvreur gère le contrôle des billets en scannant les QRCodes des spectateurs.\n@author MySpectacle team",
+    "entityTableName": "ouvreur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

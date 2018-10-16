@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-note-heading" jhiTranslate="localversionApp.note.home.createOrEditLabel">Create or edit a Note</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!note.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="note.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.note.contenu" for="field_contenu" [ngbTooltip]="'localversionApp.note.help.contenu' | translate">Contenu</label>
+                    <input type="text" class="form-control" name="contenu" id="field_contenu"
+                        [(ngModel)]="note.contenu" required/>
+                    <div [hidden]="!(editForm.controls.contenu?.dirty && editForm.controls.contenu?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.contenu?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.note.responsable" for="field_responsable">Responsable</label>
+                    <select class="form-control" id="field_responsable" name="responsable" [(ngModel)]="note.responsable" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="responsableOption.id === note.responsable?.id ? note.responsable : responsableOption" *ngFor="let responsableOption of responsables; trackBy: trackResponsableById">{{responsableOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="localversionApp.note.reservation" for="field_reservation">Reservation</label>
+                    <select class="form-control" id="field_reservation" multiple name="reservation" [(ngModel)]="note.reservations">
+                        <option [ngValue]="getSelected(note.reservations, reservationOption)" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="localversionApp.note.spectacle" for="field_spectacle">Spectacle</label>
+                    <select class="form-control" id="field_spectacle" multiple name="spectacle" [(ngModel)]="note.spectacles">
+                        <option [ngValue]="getSelected(note.spectacles, spectacleOption)" *ngFor="let spectacleOption of spectacles; trackBy: trackSpectacleById">{{spectacleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="localversionApp.note.salle" for="field_salle">Salle</label>
+                    <select class="form-control" id="field_salle" multiple name="salle" [(ngModel)]="note.salles">
+                        <option [ngValue]="getSelected(note.salles, salleOption)" *ngFor="let salleOption of salles; trackBy: trackSalleById">{{salleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

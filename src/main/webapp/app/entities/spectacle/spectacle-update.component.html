@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-spectacle-heading" jhiTranslate="localversionApp.spectacle.home.createOrEditLabel">Create or edit a Spectacle</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!spectacle.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="spectacle.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.spectacle.nom" for="field_nom" [ngbTooltip]="'localversionApp.spectacle.help.nom' | translate">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="spectacle.nom" required/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.spectacle.date" for="field_date" [ngbTooltip]="'localversionApp.spectacle.help.date' | translate">Date</label>
+                    <div class="d-flex">
+                        <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="date"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.date?.dirty && editForm.controls.date?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.date?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.date?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.spectacle.duree" for="field_duree" [ngbTooltip]="'localversionApp.spectacle.help.duree' | translate">Duree</label>
+                    <input type="number" class="form-control" name="duree" id="field_duree"
+                        [(ngModel)]="spectacle.duree" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.spectacle.resume" for="field_resume" [ngbTooltip]="'localversionApp.spectacle.help.resume' | translate">Resume</label>
+                    <input type="text" class="form-control" name="resume" id="field_resume"
+                        [(ngModel)]="spectacle.resume" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.spectacle.salle" for="field_salle">Salle</label>
+                    <select class="form-control" id="field_salle" name="salle" [(ngModel)]="spectacle.salle" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="salleOption.id === spectacle.salle?.id ? spectacle.salle : salleOption" *ngFor="let salleOption of salles; trackBy: trackSalleById">{{salleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

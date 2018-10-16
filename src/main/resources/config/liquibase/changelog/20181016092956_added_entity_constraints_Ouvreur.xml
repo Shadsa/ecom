@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ouvreur.
+    -->
+    <changeSet id="20181016092956-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ouvreurs_id"
+                                 baseTableName="ouvreur_spectacle"
+                                 constraintName="fk_ouvreur_spectacle_ouvreurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ouvreur"/>
+        <addForeignKeyConstraint baseColumnNames="spectacles_id"
+                                 baseTableName="ouvreur_spectacle"
+                                 constraintName="fk_ouvreur_spectacle_spectacles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="spectacle"/>
+        
+    </changeSet>
+</databaseChangeLog>

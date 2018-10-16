@@ -1,0 +1,35 @@
+
+{
+    "localversionApp": {
+        "responsable" : {
+            "home": {
+                "title": "Responsables",
+                "createLabel": "Create a new Responsable",
+                "createOrEditLabel": "Create or edit a Responsable"
+            },
+            "created": "A new Responsable is created with identifier {{ param }}",
+            "updated": "A Responsable is updated with identifier {{ param }}",
+            "deleted": "A Responsable is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Responsable {{ id }}?"
+            },
+            "detail": {
+                "title": "Responsable"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "dateNaissance": "Date Naissance",
+            "email": "Email",
+            "estGestionnaire": "Est Gestionnaire",
+            "salle": "Salle",
+            "note": "Note",
+            "help": {
+                "nom": "Nom du responsable",
+                "prenom": "Prénom du responsable",
+                "dateNaissance": "Date de naissance du responsable",
+                "email": "Email du responsable",
+                "estGestionnaire": "Le responsable est le gestionnaire"
+            }
+        }
+    }
+}
