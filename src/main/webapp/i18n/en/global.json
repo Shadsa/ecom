@@ -7,6 +7,13 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "qrCode": "QR Code",
+                "spectacle": "Spectacle",
+                "reservation": "Reservation",
+                "responsable": "Responsable",
+                "salle": "Salle",
+                "ouvreur": "Ouvreur",
+                "note": "Note",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
