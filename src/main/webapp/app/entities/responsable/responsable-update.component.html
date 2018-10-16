@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-responsable-heading" jhiTranslate="localversionApp.responsable.home.createOrEditLabel">Create or edit a Responsable</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!responsable.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="responsable.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.responsable.nom" for="field_nom" [ngbTooltip]="'localversionApp.responsable.help.nom' | translate">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="responsable.nom" required/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.responsable.prenom" for="field_prenom" [ngbTooltip]="'localversionApp.responsable.help.prenom' | translate">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="field_prenom"
+                        [(ngModel)]="responsable.prenom" required/>
+                    <div [hidden]="!(editForm.controls.prenom?.dirty && editForm.controls.prenom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.prenom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.responsable.dateNaissance" for="field_dateNaissance" [ngbTooltip]="'localversionApp.responsable.help.dateNaissance' | translate">Date Naissance</label>
+                    <div class="d-flex">
+                        <input id="field_dateNaissance" type="datetime-local" class="form-control" name="dateNaissance" [(ngModel)]="dateNaissance"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.dateNaissance?.dirty && editForm.controls.dateNaissance?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.dateNaissance?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.dateNaissance?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.responsable.email" for="field_email" [ngbTooltip]="'localversionApp.responsable.help.email' | translate">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="responsable.email" required/>
+                    <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.responsable.estGestionnaire" for="field_estGestionnaire" [ngbTooltip]="'localversionApp.responsable.help.estGestionnaire' | translate">Est Gestionnaire</label>
+                    <input type="checkbox" class="form-control" name="estGestionnaire" id="field_estGestionnaire"
+                        [(ngModel)]="responsable.estGestionnaire" />
+                    <div [hidden]="!(editForm.controls.estGestionnaire?.dirty && editForm.controls.estGestionnaire?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.estGestionnaire?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.responsable.salle" for="field_salle">Salle</label>
+                    <select class="form-control" id="field_salle" name="salle" [(ngModel)]="responsable.salle">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="salleOption.id === responsable.salle?.id ? responsable.salle : salleOption" *ngFor="let salleOption of salles; trackBy: trackSalleById">{{salleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

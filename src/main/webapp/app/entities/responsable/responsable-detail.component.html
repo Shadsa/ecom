@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="responsable">
+            <h2><span jhiTranslate="localversionApp.responsable.detail.title">Responsable</span> {{responsable.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="localversionApp.responsable.nom" [ngbTooltip]="'localversionApp.responsable.help.nom' | translate">Nom</span></dt>
+                <dd>
+                    <span>{{responsable.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.responsable.prenom" [ngbTooltip]="'localversionApp.responsable.help.prenom' | translate">Prenom</span></dt>
+                <dd>
+                    <span>{{responsable.prenom}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.responsable.dateNaissance" [ngbTooltip]="'localversionApp.responsable.help.dateNaissance' | translate">Date Naissance</span></dt>
+                <dd>
+                    <span>{{responsable.dateNaissance}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.responsable.email" [ngbTooltip]="'localversionApp.responsable.help.email' | translate">Email</span></dt>
+                <dd>
+                    <span>{{responsable.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.responsable.estGestionnaire" [ngbTooltip]="'localversionApp.responsable.help.estGestionnaire' | translate">Est Gestionnaire</span></dt>
+                <dd>
+                    <span>{{responsable.estGestionnaire}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.responsable.salle">Salle</span></dt>
+                <dd>
+                    <div *ngIf="responsable.salle">
+                        <a [routerLink]="['/salle', responsable.salle?.id, 'view']">{{responsable.salle?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/responsable', responsable.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

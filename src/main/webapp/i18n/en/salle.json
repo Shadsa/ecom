@@ -1,0 +1,36 @@
+
+{
+    "localversionApp": {
+        "salle" : {
+            "home": {
+                "title": "Salles",
+                "createLabel": "Create a new Salle",
+                "createOrEditLabel": "Create or edit a Salle"
+            },
+            "created": "A new Salle is created with identifier {{ param }}",
+            "updated": "A Salle is updated with identifier {{ param }}",
+            "deleted": "A Salle is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Salle {{ id }}?"
+            },
+            "detail": {
+                "title": "Salle"
+            },
+            "nom": "Nom",
+            "nbMaxPlace": "Nb Max Place",
+            "localisation": "Localisation",
+            "longitude": "Longitude",
+            "latitude": "Latitude",
+            "responsable": "Responsable",
+            "spectacle": "Spectacle",
+            "note": "Note",
+            "help": {
+                "nom": "Nom de la salle",
+                "nbMaxPlace": "Nombre maximum de places dans la salle",
+                "localisation": "Adresse de la salle",
+                "longitude": "Longitude de la salle",
+                "latitude": "Latitude de la salle"
+            }
+        }
+    }
+}

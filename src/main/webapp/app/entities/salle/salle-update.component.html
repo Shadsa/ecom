@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-salle-heading" jhiTranslate="localversionApp.salle.home.createOrEditLabel">Create or edit a Salle</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!salle.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="salle.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.salle.nom" for="field_nom" [ngbTooltip]="'localversionApp.salle.help.nom' | translate">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="salle.nom" required/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.salle.nbMaxPlace" for="field_nbMaxPlace" [ngbTooltip]="'localversionApp.salle.help.nbMaxPlace' | translate">Nb Max Place</label>
+                    <input type="number" class="form-control" name="nbMaxPlace" id="field_nbMaxPlace"
+                        [(ngModel)]="salle.nbMaxPlace" required/>
+                    <div [hidden]="!(editForm.controls.nbMaxPlace?.dirty && editForm.controls.nbMaxPlace?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nbMaxPlace?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nbMaxPlace?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.salle.localisation" for="field_localisation" [ngbTooltip]="'localversionApp.salle.help.localisation' | translate">Localisation</label>
+                    <input type="text" class="form-control" name="localisation" id="field_localisation"
+                        [(ngModel)]="salle.localisation" required/>
+                    <div [hidden]="!(editForm.controls.localisation?.dirty && editForm.controls.localisation?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.localisation?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.salle.longitude" for="field_longitude" [ngbTooltip]="'localversionApp.salle.help.longitude' | translate">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                        [(ngModel)]="salle.longitude" required/>
+                    <div [hidden]="!(editForm.controls.longitude?.dirty && editForm.controls.longitude?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.longitude?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.longitude?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="localversionApp.salle.latitude" for="field_latitude" [ngbTooltip]="'localversionApp.salle.help.latitude' | translate">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                        [(ngModel)]="salle.latitude" required/>
+                    <div [hidden]="!(editForm.controls.latitude?.dirty && editForm.controls.latitude?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.latitude?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.latitude?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+
+{
+    "localversionApp": {
+        "qRCode" : {
+            "home": {
+                "title": "QR Codes",
+                "createLabel": "Create a new QR Code",
+                "createOrEditLabel": "Create or edit a QR Code"
+            },
+            "created": "A new QR Code is created with identifier {{ param }}",
+            "updated": "A QR Code is updated with identifier {{ param }}",
+            "deleted": "A QR Code is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete QR Code {{ id }}?"
+            },
+            "detail": {
+                "title": "QR Code"
+            },
+            "qrcode": "Qrcode",
+            "reservation": "Reservation",
+            "user": "User",
+            "help": {
+                "qrcode": "Image du QRCode"
+            }
+        }
+    }
+}

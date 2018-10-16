@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Note.
+    -->
+    <changeSet id="20181016092957-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="responsable_id"
+                                 baseTableName="note"
+                                 constraintName="fk_note_responsable_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="responsable"/>
+
+        <addForeignKeyConstraint baseColumnNames="notes_id"
+                                 baseTableName="note_reservation"
+                                 constraintName="fk_note_reservation_notes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="note"/>
+        <addForeignKeyConstraint baseColumnNames="reservations_id"
+                                 baseTableName="note_reservation"
+                                 constraintName="fk_note_reservation_reservations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reservation"/>
+        
+        <addForeignKeyConstraint baseColumnNames="notes_id"
+                                 baseTableName="note_spectacle"
+                                 constraintName="fk_note_spectacle_notes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="note"/>
+        <addForeignKeyConstraint baseColumnNames="spectacles_id"
+                                 baseTableName="note_spectacle"
+                                 constraintName="fk_note_spectacle_spectacles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="spectacle"/>
+        
+        <addForeignKeyConstraint baseColumnNames="notes_id"
+                                 baseTableName="note_salle"
+                                 constraintName="fk_note_salle_notes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="note"/>
+        <addForeignKeyConstraint baseColumnNames="salles_id"
+                                 baseTableName="note_salle"
+                                 constraintName="fk_note_salle_salles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="salle"/>
+        
+    </changeSet>
+</databaseChangeLog>
