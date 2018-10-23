@@ -1,0 +1,70 @@
+{
+    "name": "Spectacle",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "javadoc": "Nom du spectacle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "date",
+            "javadoc": "Date du spectacle",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "duree",
+            "javadoc": "Durée du spectacle en minute",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "resume",
+            "javadoc": "Résumé du spectacle",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "salle",
+            "otherEntityName": "salle",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "spectacle"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "ouvreur",
+            "otherEntityName": "ouvreur",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "spectacle"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "note",
+            "otherEntityName": "note",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "spectacle"
+        }
+    ],
+    "changelogDate": "20181016092952",
+    "javadoc": "Entité Spectacle correspondant à une représentation\n@author MySpectacle team",
+    "entityTableName": "spectacle",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

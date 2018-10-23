@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Ouvreur.
+    -->
+    <changeSet id="20181016092956-1" author="jhipster">
+        <createTable tableName="ouvreur" remarks="Entité Ouvreur. L&apos;ouvreur gère le contrôle des billets en scannant les QRCodes des spectateurs. @author MySpectacle team">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nom" type="varchar(255)" remarks="Nom du ouvreur">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="prenom" type="varchar(255)" remarks="Prénom du ouvreur">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_naissance" type="datetime" remarks="Date de naissance du ouvreur">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="email" type="varchar(255)" remarks="Email du ouvreur">
+                <constraints nullable="false" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="ouvreur" columnName="date_naissance" columnDataType="datetime"/>
+        
+        <createTable tableName="ouvreur_spectacle">
+            <column name="spectacles_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ouvreurs_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="ouvreurs_id, spectacles_id" tableName="ouvreur_spectacle"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

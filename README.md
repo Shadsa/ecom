@@ -1,14 +1,11 @@
-#ECOM MySpectacle
+# ECOM MySpectacle
 
-##Branch Documentation
+## Branch Documentation
 - Master for stable build release with x.y version, commited from master.
 - :/!\ DEFAULT : test for x.y.z versions, Q&A before master merge, merging IHM & backend into it for assembly. It's also the default branch for the git.
-- IHM branch for frontend functions,  used only Master functionality !
-- Backend branch for backend functions, used only Master functionality !
+- One branch per dev sets
 
-##Deploy Documentation
-
-WIP
+## Deploy Documentation
 
 
 

@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="localversionApp.qRCode.home.title">QR Codes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-qr-code" [routerLink]="['/qr-code/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="localversionApp.qRCode.home.createLabel">
+            Create new QR Code
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="qRCodes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="localversionApp.qRCode.qrcode">Qrcode</span></th>
+            <th><span jhiTranslate="localversionApp.qRCode.reservation">Reservation</span></th>
+            <th><span jhiTranslate="localversionApp.qRCode.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let qRCode of qRCodes ;trackBy: trackId">
+                <td><a [routerLink]="['/qr-code', qRCode.id, 'view' ]">{{qRCode.id}}</a></td>
+                <td>
+                    <a *ngIf="qRCode.qrcode" (click)="openFile(qRCode.qrcodeContentType, qRCode.qrcode)">
+                        <img [src]="'data:' + qRCode.qrcodeContentType + ';base64,' + qRCode.qrcode" style="max-height: 30px;" alt="qRCode image"/>
+                    </a>
+                    <span *ngIf="qRCode.qrcode">{{qRCode.qrcodeContentType}}, {{byteSize(qRCode.qrcode)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="qRCode.reservation">
+                        <a [routerLink]="['../reservation', qRCode.reservation?.id, 'view' ]" >{{qRCode.reservation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{qRCode.user?.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/qr-code', qRCode.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/qr-code', qRCode.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'qr-code/'+ qRCode.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

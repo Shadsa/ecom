@@ -1,0 +1,77 @@
+{
+    "name": "Salle",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "javadoc": "Nom de la salle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nbMaxPlace",
+            "javadoc": "Nombre maximum de places dans la salle",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "localisation",
+            "javadoc": "Adresse de la salle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "longitude",
+            "javadoc": "Longitude de la salle",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "latitude",
+            "javadoc": "Latitude de la salle",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "responsable",
+            "otherEntityName": "responsable",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "salle"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "spectacle",
+            "otherEntityName": "spectacle",
+            "otherEntityRelationshipName": "salle"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "note",
+            "otherEntityName": "note",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "salle"
+        }
+    ],
+    "changelogDate": "20181016092955",
+    "javadoc": "Entité Salle. Décrit une salle, avec son nom, son nombre de place, sa location et sa position GPS (longitude/latitude)\n@author MySpectacle team",
+    "entityTableName": "salle",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

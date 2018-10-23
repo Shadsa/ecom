@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="note">
+            <h2><span jhiTranslate="localversionApp.note.detail.title">Note</span> {{note.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="localversionApp.note.contenu" [ngbTooltip]="'localversionApp.note.help.contenu' | translate">Contenu</span></dt>
+                <dd>
+                    <span>{{note.contenu}}</span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.note.responsable">Responsable</span></dt>
+                <dd>
+                    <div *ngIf="note.responsable">
+                        <a [routerLink]="['/responsable', note.responsable?.id, 'view']">{{note.responsable?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.note.reservation">Reservation</span></dt>
+                <dd>
+                    <span *ngFor="let reservation of note.reservations; let last = last">
+                        <a [routerLink]="['/reservation', reservation?.id, 'view' ]">{{reservation.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.note.spectacle">Spectacle</span></dt>
+                <dd>
+                    <span *ngFor="let spectacle of note.spectacles; let last = last">
+                        <a [routerLink]="['/spectacle', spectacle?.id, 'view' ]">{{spectacle.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="localversionApp.note.salle">Salle</span></dt>
+                <dd>
+                    <span *ngFor="let salle of note.salles; let last = last">
+                        <a [routerLink]="['/salle', salle?.id, 'view' ]">{{salle.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/note', note.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

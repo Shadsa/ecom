@@ -1,0 +1,94 @@
+
+/**
+ * Entité QRCode pour la gestion des billets
+ * @author MySpectacle team
+ */
+entity QRCode {
+	qrcode ImageBlob required/** Image du QRCode*/
+}
+
+/**
+ * Entité Spectacle correspondant à une représentation
+ * @author MySpectacle team
+ */
+entity Spectacle {
+	nom String required /** Nom du spectacle*/
+	date ZonedDateTime required /** Date du spectacle*/
+    duree Integer /**Durée du spectacle en minute*/
+    resume String /**Résumé du spectacle*/
+}
+
+
+/**
+ * Entité Réservation qui permet la gestion des réservations
+ * @author MySpectacle team
+ */
+entity Reservation {
+	prix Integer required /**Prix de la réservation*/
+}
+
+/**
+ * Entité Responsable, un responsable gère une salle. Si le responsable est aussi le gestionnaire,
+ * il aura des accès supplémentaires : vision global des salles, gestion des responsables.
+ * @author MySpectacle team
+ */
+entity Responsable {
+	nom String required  /**Nom du responsable*/
+    prenom String required  /**Prénom du responsable*/
+    dateNaissance ZonedDateTime required /**Date de naissance du responsable*/
+    email String required /**Email du responsable*/
+    estGestionnaire Boolean required /**Le responsable est le gestionnaire*/
+}
+
+/**
+ * Entité Salle. Décrit une salle, avec son nom, son nombre de place, sa location et sa position GPS (longitude/latitude)
+ * @author MySpectacle team
+ */
+entity Salle {
+	nom String required  /**Nom de la salle*/
+    nbMaxPlace Integer required /**Nombre maximum de places dans la salle*/
+    localisation String required /**Adresse de la salle*/
+    longitude Double required /**Longitude de la salle*/
+    latitude Double required /**Latitude de la salle*/
+}
+
+/**
+ * Entité Ouvreur. L'ouvreur gère le contrôle des billets en scannant les QRCodes des spectateurs.
+ * @author MySpectacle team
+ */
+entity Ouvreur {
+	nom String required  /**Nom du ouvreur*/
+    prenom String required  /**Prénom du ouvreur*/
+    dateNaissance ZonedDateTime required /**Date de naissance du ouvreur*/
+    email String required /**Email du ouvreur*/
+}
+
+/**
+ * Entité Note. Permet de prendre des notes sur une réservation, spectacle, salle.
+ * @author MySpectacle team
+ */
+entity Note {
+	contenu String required  /**Contenu de la note*/
+}
+
+relationship OneToOne{
+QRCode{reservation} to Reservation{code}
+Reservation{spectacle} to Spectacle{reservation}
+Responsable{salle} to Salle{responsable}
+}
+
+relationship ManyToMany{
+Ouvreur{spectacle} to Spectacle{ouvreur}
+Note{reservation} to Reservation{note}
+Note{spectacle} to Spectacle{note}
+Note{salle} to Salle{note}
+}
+
+relationship ManyToOne{
+QRCode{user} to User{code}
+Note{responsable} to Responsable{note}
+Spectacle{salle} to Salle{spectacle}
+}
+
+
+
